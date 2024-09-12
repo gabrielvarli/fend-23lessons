@@ -2,20 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Färgschema */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --foreground-rgb: 30, 30, 30; /* Mörkare textfärg för bättre kontrast */
+  --background-start-rgb: 240, 246, 252; /* Ljus bakgrund */
   --background-end-rgb: 255, 255, 255;
+  --primary-color: 56, 189, 248; /* Modern ljusblå för knappar och accenter */
+  --secondary-color: 96, 165, 250; /* Komplementfärg */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+/* Global styling */
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,10 +20,153 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: "Inter", sans-serif; /* Modern sans-serif typsnitt */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Kortkomponenter med modern stil */
+.author-card {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Rundare hörn */
+  padding: 2rem;
+  max-width: 24rem;
+  color: #1f2937; /* Mörkare text */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.author-card:hover {
+  transform: translateY(-5px); /* Lyft kortet något vid hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.author-card__name {
+  font-weight: 600; /* Semi-bold för tydlig kontrast */
+  font-size: 1.25rem;
+}
+
+.author-card__year-of-birth {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.book-card {
+  max-width: 24rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.book-card__title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: rgb(var(--primary-color)); /* Primärfärg för titeln */
+}
+
+.book-card__detail {
+  color: #374151;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.book-card__label {
+  font-weight: 500;
+  color: #2563eb;
+}
+
+/* Modernisera Form */
+.form {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #f9fafb;
+}
+
+.form__group {
+  margin-bottom: 16px;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form__input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  transition: border-color 0.2s;
+}
+
+.form__input:focus {
+  border-color: rgb(var(--primary-color));
+  outline: none;
+}
+
+.form__button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.form__button--primary {
+  background-color: rgb(var(--primary-color));
+  color: black;
+}
+
+.form__button--primary:hover {
+  background-color: rgb(var(--secondary-color));
+}
+
+.form__button--secondary {
+  background-color: #6b7280;
+  color: white;
+}
+
+.form__button--secondary:hover {
+  background-color: #4b5563;
+}
+
+.form__text {
+  text-align: center;
+  margin: 12px 0;
+  color: #374151;
+}
+input::placeholder {
+  color: blue; /* Ursprunglig placeholder-färg */
+}
+
+input:focus::placeholder {
+  color: red; /* Färgen när användaren börjar skriva */
+}
+input:focus {
+  color: green; /* Färgen när användaren klickar på fältet */
 }
